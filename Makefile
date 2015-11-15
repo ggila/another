@@ -6,7 +6,7 @@
 #    By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/13 23:46:29 by ggilaber          #+#    #+#              #
-#    Updated: 2015/11/15 06:19:19 by ggilaber         ###   ########.fr        #
+#    Updated: 2015/11/15 16:47:05 by ggilaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,18 @@ NAME = another
 
 SRCSFILES = main.cpp\
 				class/Pieton.cpp\
-				class/Foule.cpp
+				class/Foule.cpp\
+				namespace/geometrie.cpp
 
 SRCPATH = src
 OBJPATH = obj
 CC = clang++
-INCLUDES = -I $(SRCPATH) -I $(shell pwd)/SFML/include -I inc/
+INCLUDES =  -I inc\
+			-I src/class\
+			-I src/namespace\
+			-I SFML/include
 
-LDENV = DYLD_FRAMEWORK_PATH="$(shell pwd)/SFML/Frameworks"
+LDENV = DYLD_FRAMEWORK_PATH="SFML/Frameworks"
 # export DYLD_FRAMEWORK_PATH=`pwd`"/SFML/Frameworks"
 
 LIBS =	-framework sfml-graphics -framework sfml-window -framework sfml-system\

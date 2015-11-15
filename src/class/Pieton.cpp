@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/14 02:45:17 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/15 05:13:25 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/15 16:42:12 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ bool	Pieton::_collide(Pieton &that)
 	if (this == &that)
 		return false;
 
-	int	dist = (pow(this->_pos[X] - that._pos[X], 2)
-				+ pow(this->_pos[Y] - that._pos[Y],2));
+	int	dist = Geo::norm2nonsqrt(this->_pos, that._pos);
 	int	min_dist = pow(2 * PIETONRAD, 2);
 
 	if (dist <= min_dist)

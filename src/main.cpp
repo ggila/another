@@ -6,14 +6,14 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/13 23:44:52 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/15 05:20:26 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/15 17:35:19 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "another.h"
-#include "class/Foule.hpp"
+#include "Foule.hpp"
+#include "Pieton.hpp"
 
-#include<iostream>
 int	main(void)
 {
 	srand(time(NULL));
@@ -35,10 +35,11 @@ int	main(void)
 				pause = !pause;
 		}
 
-		crowd.newPieton();
-
 		if (!pause)
 		{
+			if (rand()%10)
+				crowd.newPieton();
+
 			app.clear();
 			crowd.move();
 			crowd.draw(app);
