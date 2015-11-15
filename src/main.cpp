@@ -6,12 +6,12 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/13 23:44:52 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/14 07:05:18 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/15 05:20:26 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "another.h"
-#include "class/Pieton.hpp"
+#include "class/Foule.hpp"
 
 #include<iostream>
 int	main(void)
@@ -20,7 +20,8 @@ int	main(void)
 	sf::RenderWindow	app(sf::VideoMode(WIDTH, HEIGHT, 32), "another",
 			sf::Style::Close);
 
-	std::list<Pieton>	foule;
+	Foule	crowd;
+	bool	pause;
 
 	while (app.isOpen())
 	{
@@ -30,27 +31,24 @@ int	main(void)
 		{
 			if (e.type == sf::Event::Closed)
 				app.close();
+			if (e.type == sf::Event::KeyPressed)
+				pause = !pause;
 		}
 
-		if (!(rand() % 2))
-			foule.push_back(Pieton());
+		crowd.newPieton();
 
-		app.clear();
-		std::list<Pieton>::iterator it = foule.begin();
-		while (it != foule.end())
+		if (!pause)
 		{
-			it->move();
-			if (it->out())
-				it = foule.erase(it);
-			else
-			{
-				app.draw(*it);
-				it++;
-			}
-		}
-		app.display();
+			app.clear();
+			crowd.move();
+			crowd.draw(app);
+			app.display();
 
-		usleep(3000);
+			if (!(rand() % 10))
+				std::cout << "On map: " << Pieton::population <<std::endl;
+		}
+
+		usleep(30000);
 	}
 	return 0;
 }

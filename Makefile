@@ -6,14 +6,15 @@
 #    By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/13 23:46:29 by ggilaber          #+#    #+#              #
-#    Updated: 2015/11/14 07:01:21 by ggilaber         ###   ########.fr        #
+#    Updated: 2015/11/15 06:19:19 by ggilaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = another
 
 SRCSFILES = main.cpp\
-				class/Pieton.cpp
+				class/Pieton.cpp\
+				class/Foule.cpp
 
 SRCPATH = src
 OBJPATH = obj
@@ -57,6 +58,7 @@ clean:
 	rm -rf $(OBJPATH)
 
 fclean: clean
+	rm -rf SFML
 	rm -rf $(NAME)
 
 re: fclean all

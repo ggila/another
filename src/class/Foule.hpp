@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pieton.hpp                                         :+:      :+:    :+:   */
+/*   Foule.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/14 01:18:52 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/15 03:56:38 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/11/15 02:04:30 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/11/15 06:18:47 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIETON_HPP
-# define PIETON_HPP
+#ifndef FOULE_HPP
+# define FOULE_HPP
 
 # include "another.h"
 
-class Pieton {
+class Foule{
 	public:
-		static int			population;
-
-		Pieton();
-		void				move(Pieton crowd[]);
-		bool				out(void);
-		void				born(void);
-		void				die(void);
-
-		sf::CircleShape		getImg(void);
-		bool				isAlive(void);
+		void	newPieton(void);
+		void	draw(sf::RenderWindow &app);
+		void	move(void);
 
 	private:
-		bool				_alive;
-		sf::CircleShape		_img;
-		char				_speed;
-		int					_pos[2];
-		double				_dir[2];
-
-		bool				_collide(Pieton &that);
+		Pieton	_foule[MAXFOULESIZE];
 };
 
 #endif
