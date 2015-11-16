@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Foule.hpp                                          :+:      :+:    :+:   */
+/*   Stress.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/15 02:04:30 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/16 20:27:29 by ggilaber         ###   ########.fr       */
+/*   Created: 2015/11/16 14:23:32 by ggilaber          #+#    #+#             */
+/*   Updated: 2015/11/16 22:25:07 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FOULE_HPP
-# define FOULE_HPP
-
 # include "another.h"
-#include "Pieton.hpp"
 
-class Foule{
+class	Stress {
 
 // This is a Singleton
 	public:
-		static Foule	*instance(void);
+		static Stress	*instance(void);
 	private:
-		static Foule	*_single;
-		Foule(void);
+		static Stress	*_single;
+		Stress(void);
 
+// Stress
 	public:
-		void	newPieton(void);
+		void	update(Foule *foule);
 		void	draw(sf::RenderWindow &app);
-		void	move(void);
+//		void	fff(void);
 
-		Pieton	_foule[MAXFOULESIZE];
 	private:
-};
+//		int		*_current;
+		char		_tab[HEIGHT][WIDTH];
+//		int		_tab2[HEIGHT][WIDTH];
+		char		_oneStress[2 * STRESSRAD][2 * STRESSRAD];
 
-#endif
+		void	_addPieton(Pieton &P);
+};

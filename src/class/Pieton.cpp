@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/14 02:45:17 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/15 16:42:12 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/16 21:46:38 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		Pieton::population = 0;
 
 sf::CircleShape	Pieton::getImg(void) {return this->_img;};
 bool				Pieton::isAlive(void) {return this->_alive;}
+int					Pieton::getX(void) {return this->_pos[X];}
+int					Pieton::getY(void) {return this->_pos[Y];}
 
 void	Pieton::born(void)
 {
@@ -52,6 +54,7 @@ Pieton::Pieton(void): _alive(0), _speed(PIETONSPEED)
 {
 	this->_img.setRadius(PIETONRAD);
 	this->_img.setFillColor(sf::Color(255, 255, 255, 255));
+	this->_img.setOrigin(PIETONRAD, PIETONRAD);
 //	this->_img.setFillColor(sf::Color(rand()%255, rand()%255, rand()%255, 255));
 }
 
@@ -84,7 +87,7 @@ bool	Pieton::_collide(Pieton &that)
 
 	if (dist <= min_dist)
 	{
-		std::cout << "COLLISION" <<std::endl;
+//		std::cout << "COLLISION" <<std::endl;
 		return (true);
 	}
 

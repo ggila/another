@@ -6,12 +6,23 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/15 02:09:03 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/15 03:58:33 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/16 15:46:22 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "another.h"
 #include "Foule.hpp"
+
+Foule	*Foule::_single = NULL;
+
+Foule	*Foule::instance(void)
+{
+	if (!Foule::_single)
+		Foule::_single = new Foule;
+	return Foule::_single;
+}
+
+Foule::Foule() {};
 
 void	Foule::newPieton(void)
 {

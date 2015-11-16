@@ -6,7 +6,7 @@
 #    By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/13 23:46:29 by ggilaber          #+#    #+#              #
-#    Updated: 2015/11/15 16:47:05 by ggilaber         ###   ########.fr        #
+#    Updated: 2015/11/16 18:25:01 by ggilaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = another
 SRCSFILES = main.cpp\
 				class/Pieton.cpp\
 				class/Foule.cpp\
+				class/Stress.cpp\
 				namespace/geometrie.cpp
 
 SRCPATH = src
@@ -62,7 +63,6 @@ clean:
 	rm -rf $(OBJPATH)
 
 fclean: clean
-	rm -rf SFML
 	rm -rf $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/14 01:18:52 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/15 03:56:38 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/16 19:45:34 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Pieton {
 		void				die(void);
 
 		sf::CircleShape		getImg(void);
+		int					getX(void);
+		int					getY(void);
 		bool				isAlive(void);
 
 	private:
