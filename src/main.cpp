@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/13 23:44:52 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/16 23:26:49 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/17 12:56:35 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void)
 	sf::RenderWindow	app(sf::VideoMode(WIDTH, HEIGHT, 32), "another",
 			sf::Style::Close);
 
-	bool	pause;
+	bool	pause = false;
 	bool	drawStress = false;
 	bool	drawPieton = false;
 
@@ -43,13 +43,13 @@ int	main(void)
 
 		while (app.pollEvent(e))
 		{
-			if (e.type == sf::Event::Closed)
+			if (e.type == sf::Event::Closed || e.text.unicode == sf::Keyboard::Escape)
 				app.close();
-			if (e.text.unicode == ' ')
+			else if (e.text.unicode == ' ')
 				pause = !pause;
-			if (e.text.unicode == 's')
+			else if (e.text.unicode == 's')
 				drawStress = !drawStress;
-			if (e.text.unicode == 'p')
+			else if (e.text.unicode == 'p')
 				drawPieton = !drawPieton;
 		}
 

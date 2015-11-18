@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/14 02:45:17 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/16 21:46:38 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/18 21:18:51 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,34 @@ int					Pieton::getY(void) {return this->_pos[Y];}
 
 void	Pieton::born(void)
 {
-	int		rand_val = rand();
-	bool	t1 = rand_val & 0x1;
-	bool	t2 = rand_val & (0x1 << 1);
+	unsigned int	rand_val = rand();
+	bool			t1 = rand_val & 0x1;
+	bool			t2 = rand_val & (0x1 << 1);
+	double			ang;
 
 	Pieton::population += 1;
 	this->_alive = true;
+
 	if (t1)
 	{
 		this->_pos[X] = rand_val % WIDTH;
 		this->_pos[Y] = t2 ? 0 : HEIGHT;
-		this->_dir[X] = cos(rand_val);
-		this->_dir[Y] = t2 ? std::abs(sin(rand_val)) : -std::abs(sin(rand_val));
+		this->_theta = t2 ? rand_val % 180: rand_val % 180 + 180; 
+//		this->_theta = t2 ? 90: -90; 
 	}
 	else
 	{
 		this->_pos[X] = t2 ? 0 : WIDTH;
 		this->_pos[Y] = rand_val % HEIGHT;
-		this->_dir[X] = t2 ? std::abs(sin(rand_val)) : -std::abs(sin(rand_val));
-		this->_dir[Y] = cos(rand_val);
+		this->_theta = t2 ? rand_val % 180 - 90: rand_val % 180 + 90; 
+//		this->_theta = t2 ? 0: 180; 
 	}
+
+	ang = M_PI * (this->_theta / 180.0);
+	this->_dir[X] = cos(ang);
+	this->_dir[Y] = sin(ang);
+	this->_theta = (this->_theta + 360) % 360;
+	std::cout << this->_theta << std::endl;
 }
 
 void	Pieton::die(void)

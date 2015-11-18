@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/14 01:18:52 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/16 19:45:34 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/17 13:17:52 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Pieton {
 		bool				_alive;
 		sf::CircleShape		_img;
 		char				_speed;
+		int					_theta;
 		int					_pos[2];
 		double				_dir[2];
 

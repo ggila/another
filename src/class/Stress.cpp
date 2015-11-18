@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/16 15:14:10 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/16 22:50:42 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/17 13:05:37 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ Stress::Stress(void)
 	memset(stressFunc, 0, PIETONRAD);
 	for (int i=PIETONRAD; i < STRESSRAD; ++i) 
 		stressFunc[i] = MAXSTRESS * std::exp((PIETONRAD - i) * (3. / STRESSRAD));
+	// Stress depends on direction
 
 	memset(this->_oneStress, 0, STRESSRAD * STRESSRAD);
 	double inc = std::atan(1./STRESSRAD) / 2;
@@ -57,30 +58,19 @@ void	Stress::_addPieton(Pieton &P)
 	int	maxY = y < HEIGHT - STRESSRAD ? STRESSRAD : HEIGHT - y;
 
 	for (int i=minX; i<maxX; ++i) {
-		for (int j=minY; j<maxY; ++j){
-//			std::cout << i << "," << j  << std::endl;
+		for (int j=minY; j<maxY; ++j)
 			this->_tab[y + j][x + i] += this->_oneStress[STRESSRAD + j][STRESSRAD + i];
-	}}
+	}
 }
 
 void	Stress::update(Foule *foule)
 {
-//	static bool	alt = true;
-
-//	alt = !alt;
-//	this->_current = alt ? this->_tab1: this->_tab2;
 	memset(this->_tab, 0, HEIGHT * WIDTH);
 	for (size_t i=0; i < MAXFOULESIZE; ++i)
 	{
 		if (foule->_foule[i].isAlive())
 			this->_addPieton(foule->_foule[i]);
 	}
-//	for (int i=750; i<WIDTH; ++i){
-//		for (int j=500; j<WIDTH; ++j) {
-//			std::cout << this->_tab[j][i] << " ";
-//		}
-//		std::cout  << std::endl;
-//	}
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: ggilaber <ggilaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/14 01:40:49 by ggilaber          #+#    #+#             */
-/*   Updated: 2015/11/16 23:32:29 by ggilaber         ###   ########.fr       */
+/*   Updated: 2015/11/18 21:33:53 by ggilaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # define Y 1
 
 # define PIETONRAD 4
-# define PIETONSPEED 6
+# define PIETONSPEED 3
 
-# define MAXFOULESIZE 300
+# define MAXFOULESIZE 50
 
 # define MAXSTRESS 75
 # define STRESSRAD (30 * PIETONRAD)
